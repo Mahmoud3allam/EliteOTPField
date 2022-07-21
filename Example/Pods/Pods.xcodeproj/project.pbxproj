@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		0DDC21F813C503AC11B6124B7BCC651A /* EliteOTPField-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D6F3AC7860777DE3431CDA75155F3F45 /* EliteOTPField-dummy.m */; };
-		18CEADCD2889084200FEEF99 /* Vibration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CEADCC2889084200FEEF99 /* Vibration.swift */; };
-		18CEADD02889112400FEEF99 /* EliteOTPFieldBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CEADCE28890D8500FEEF99 /* EliteOTPFieldBuilder.swift */; };
-		18CEADD628891B9A00FEEF99 /* EliteOTPField + UITextFieldDelegete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CEADD528891B9A00FEEF99 /* EliteOTPField + UITextFieldDelegete.swift */; };
+		18CEADDE2889228C00FEEF99 /* EliteOTPFieldBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CEADD82889228C00FEEF99 /* EliteOTPFieldBuilder.swift */; };
+		18CEADDF2889228C00FEEF99 /* EliteOTPField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CEADDA2889228C00FEEF99 /* EliteOTPField.swift */; };
+		18CEADE02889228C00FEEF99 /* EliteOTPField + UITextFieldDelegete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CEADDB2889228C00FEEF99 /* EliteOTPField + UITextFieldDelegete.swift */; };
+		18CEADE12889228C00FEEF99 /* Vibration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CEADDD2889228C00FEEF99 /* Vibration.swift */; };
 		201580358D3D637C05157C2764657B35 /* Pods-EliteOTPField_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D16053F4243C20D879E99C23A28AF61 /* Pods-EliteOTPField_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2CBABD173612F8C39C270DAF7C8E12C3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
-		3FABCF4ECB7F894B7D45C246093201B6 /* EliteOTPField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733B82E7A9087281E689A03C7C4D4A51 /* EliteOTPField.swift */; };
 		5615E1B4ADEDC90369E0B8A4842E4189 /* Pods-EliteOTPField_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4E0662B8035101DDAAFFB366F721A218 /* Pods-EliteOTPField_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5EC0D6859A0470C12DAD132C0B1369EA /* Pods-EliteOTPField_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F857E107D0B19FEA7D9EE2C64EAA4668 /* Pods-EliteOTPField_Example-dummy.m */; };
 		7D288F7AEE4A521B664D6CFA1E1492BA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
@@ -47,9 +47,10 @@
 		0BB2B85CE3A2E045DD53F0D4D72A724D /* Pods-EliteOTPField_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-EliteOTPField_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		0D82DDB9F90B5AF59B71124C2150BD54 /* EliteOTPField.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = EliteOTPField.modulemap; sourceTree = "<group>"; };
 		0EBEDE75672B4E186E5CC546974E3125 /* Pods-EliteOTPField_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-EliteOTPField_Example.release.xcconfig"; sourceTree = "<group>"; };
-		18CEADCC2889084200FEEF99 /* Vibration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vibration.swift; sourceTree = "<group>"; };
-		18CEADCE28890D8500FEEF99 /* EliteOTPFieldBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EliteOTPFieldBuilder.swift; sourceTree = "<group>"; };
-		18CEADD528891B9A00FEEF99 /* EliteOTPField + UITextFieldDelegete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EliteOTPField + UITextFieldDelegete.swift"; sourceTree = "<group>"; };
+		18CEADD82889228C00FEEF99 /* EliteOTPFieldBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EliteOTPFieldBuilder.swift; sourceTree = "<group>"; };
+		18CEADDA2889228C00FEEF99 /* EliteOTPField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EliteOTPField.swift; sourceTree = "<group>"; };
+		18CEADDB2889228C00FEEF99 /* EliteOTPField + UITextFieldDelegete.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EliteOTPField + UITextFieldDelegete.swift"; sourceTree = "<group>"; };
+		18CEADDD2889228C00FEEF99 /* Vibration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vibration.swift; sourceTree = "<group>"; };
 		1D93DECC35BF2A0CA8BD5993AE7EC4C6 /* EliteOTPField */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = EliteOTPField; path = EliteOTPField.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2008A65C91EC7D38289D5B8839AD4B1D /* Pods-EliteOTPField_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-EliteOTPField_Tests.modulemap"; sourceTree = "<group>"; };
 		295FC80B60D11CDE2532C5A9F17D9C30 /* EliteOTPField.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = EliteOTPField.release.xcconfig; sourceTree = "<group>"; };
@@ -60,7 +61,6 @@
 		65DE2677EFD9E7924C5C112BC173649D /* Pods-EliteOTPField_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-EliteOTPField_Example-Info.plist"; sourceTree = "<group>"; };
 		698D90CB757254472717CBF19410912B /* Pods-EliteOTPField_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-EliteOTPField_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		733B82E7A9087281E689A03C7C4D4A51 /* EliteOTPField.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EliteOTPField.swift; sourceTree = "<group>"; };
 		736A872BD2F67E7F4B10668E5C7A0736 /* Pods-EliteOTPField_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-EliteOTPField_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		7739E7F358705728489AD9A82A47CBCB /* EliteOTPField.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = EliteOTPField.debug.xcconfig; sourceTree = "<group>"; };
 		842CA1734A9FA7685348422AFA38C98D /* Pods-EliteOTPField_Tests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-EliteOTPField_Tests"; path = Pods_EliteOTPField_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -141,29 +141,32 @@
 			path = "Target Support Files/Pods-EliteOTPField_Example";
 			sourceTree = "<group>";
 		};
-		18CEADD22889168200FEEF99 /* Utills */ = {
+		18CEADD72889228C00FEEF99 /* Builder */ = {
 			isa = PBXGroup;
 			children = (
-				18CEADCC2889084200FEEF99 /* Vibration.swift */,
+				18CEADD82889228C00FEEF99 /* EliteOTPFieldBuilder.swift */,
 			);
-			path = Utills;
+			name = Builder;
+			path = EliteOTPField/Classes/Builder;
 			sourceTree = "<group>";
 		};
-		18CEADD32889168A00FEEF99 /* Components */ = {
+		18CEADD92889228C00FEEF99 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				733B82E7A9087281E689A03C7C4D4A51 /* EliteOTPField.swift */,
-				18CEADD528891B9A00FEEF99 /* EliteOTPField + UITextFieldDelegete.swift */,
+				18CEADDA2889228C00FEEF99 /* EliteOTPField.swift */,
+				18CEADDB2889228C00FEEF99 /* EliteOTPField + UITextFieldDelegete.swift */,
 			);
-			path = Components;
+			name = Components;
+			path = EliteOTPField/Classes/Components;
 			sourceTree = "<group>";
 		};
-		18CEADD42889169700FEEF99 /* Builder */ = {
+		18CEADDC2889228C00FEEF99 /* Utills */ = {
 			isa = PBXGroup;
 			children = (
-				18CEADCE28890D8500FEEF99 /* EliteOTPFieldBuilder.swift */,
+				18CEADDD2889228C00FEEF99 /* Vibration.swift */,
 			);
-			path = Builder;
+			name = Utills;
+			path = EliteOTPField/Classes/Utills;
 			sourceTree = "<group>";
 		};
 		578452D2E740E91742655AC8F1636D1F /* iOS */ = {
@@ -177,9 +180,9 @@
 		6961F8F6EB15BB74D3C567A71ACD3D72 /* EliteOTPField */ = {
 			isa = PBXGroup;
 			children = (
-				18CEADD42889169700FEEF99 /* Builder */,
-				18CEADD32889168A00FEEF99 /* Components */,
-				18CEADD22889168200FEEF99 /* Utills */,
+				18CEADD72889228C00FEEF99 /* Builder */,
+				18CEADD92889228C00FEEF99 /* Components */,
+				18CEADDC2889228C00FEEF99 /* Utills */,
 				859D4BD61108B964225099D8CE29848B /* Pod */,
 				A1AE80498FEA0ADA04DAA88B8C4FF180 /* Support Files */,
 			);
@@ -416,11 +419,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18CEADD628891B9A00FEEF99 /* EliteOTPField + UITextFieldDelegete.swift in Sources */,
-				18CEADCD2889084200FEEF99 /* Vibration.swift in Sources */,
+				18CEADDF2889228C00FEEF99 /* EliteOTPField.swift in Sources */,
+				18CEADDE2889228C00FEEF99 /* EliteOTPFieldBuilder.swift in Sources */,
+				18CEADE12889228C00FEEF99 /* Vibration.swift in Sources */,
 				0DDC21F813C503AC11B6124B7BCC651A /* EliteOTPField-dummy.m in Sources */,
-				18CEADD02889112400FEEF99 /* EliteOTPFieldBuilder.swift in Sources */,
-				3FABCF4ECB7F894B7D45C246093201B6 /* EliteOTPField.swift in Sources */,
+				18CEADE02889228C00FEEF99 /* EliteOTPField + UITextFieldDelegete.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
