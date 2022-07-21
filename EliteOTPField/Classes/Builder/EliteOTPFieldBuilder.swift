@@ -21,7 +21,12 @@ public class EliteOTPFieldBuilder {
     private var borderWidthInFilledState: CGFloat = 1
     private var emptyStateBorderColor: CGColor = UIColor.black.cgColor
     private var isVibrateEnabled: Bool = true
+    private var fieldFilledBackgroundColor: UIColor = .clear
+    private var isAnimationEnabledOnLastDigit: Bool = false
+    private var animationType: EliteOTPAnimationTypes = .none
+    
     public var translatesAutoresizingMaskIntoConstraints: Bool = true
+    
 
     public init() {
     }
@@ -75,6 +80,17 @@ public class EliteOTPFieldBuilder {
     public func setVibration(isEnabled: Bool) {
         self.isVibrateEnabled = isEnabled
     }
+    
+    public func setFieldBackground(color: UIColor) {
+        self.fieldFilledBackgroundColor = color
+    }
+    public func setAnimationType(type:EliteOTPAnimationTypes) {
+        self.animationType = type
+    }
+    
+    public func setLastDigitAnimation(isEnabled: Bool) {
+        self.isAnimationEnabledOnLastDigit = isEnabled
+    }
     public func build() -> EliteOTPField {
         let field = EliteOTPField()
         field.translatesAutoresizingMaskIntoConstraints = self.translatesAutoresizingMaskIntoConstraints
@@ -92,6 +108,9 @@ public class EliteOTPFieldBuilder {
         field.borderWidthInEmptyState = self.borderWidthInEmptyState
         field.borderWidthInFilledState = self.borderWidthInFilledState
         field.isVibrateEnabled = self.isVibrateEnabled
+        field.fieldFilledBackgroundColor = self.fieldFilledBackgroundColor
+        field.isAnimationEnabledOnLastDigit = self.isAnimationEnabledOnLastDigit
+        field.animationType = animationType
         field.configure()
         return field
     }

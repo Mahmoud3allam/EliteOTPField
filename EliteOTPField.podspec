@@ -26,7 +26,7 @@ Pod::Spec.new do |s|
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Mahmoud3allam' => 'allam40960@gmail.com' }
   s.source           = { :git => 'https://github.com/Mahmoud3allam/EliteOTPField.git', :tag => s.version.to_s }
-  s.social_media_url = 'https://www.linkedin.com/in/mahmoud-allam-913183169/'
+  s.social_media_url = 'https://www.linkedin.com/in/mahmoud-allam-913183169'
 
   s.ios.deployment_target = '10.0'
 

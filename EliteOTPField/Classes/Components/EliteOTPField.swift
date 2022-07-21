@@ -15,6 +15,8 @@ final public class EliteOTPField : UITextField {
     internal var fontType: UIFont = UIFont.systemFont(ofSize: 30)
     internal var placeHolderFontType: UIFont = UIFont.systemFont(ofSize: 40)
     internal var fieldTextColor: UIColor = .black
+    internal var fieldFilledBackgroundColor: UIColor = .clear
+
     internal var fieldPlaceHolder = "_"
     internal var isBorderEnabled: Bool = false
     internal var borderColorFilledState: CGColor = UIColor.black.cgColor
@@ -23,6 +25,9 @@ final public class EliteOTPField : UITextField {
     internal var borderWidthInFilledState: CGFloat = 1
     internal var slotCount:Int = 6
     internal var isVibrateEnabled: Bool = true
+    internal var isAnimationEnabledOnLastDigit: Bool = false
+    internal var animationType: EliteOTPAnimationTypes = .none
+    internal var currentText = ""
 
     internal var isConfigured = false
     internal var digitsLabels = [UILabel]()
@@ -113,6 +118,27 @@ final public class EliteOTPField : UITextField {
             }
             return
         }
+        
+        let index = text.count - 1 <= 0 ? 0 : text.count - 1
+        let labelToAnimate =  digitsLabels[index]
+        if text.count > self.currentText.count {
+            switch self.animationType {
+            case .flip:
+                UIView.transition(with: labelToAnimate, duration: 0.3, options: .transitionFlipFromRight, animations: nil, completion: nil)
+            case .flash:
+                UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseInOut) {
+                    labelToAnimate.alpha = 0
+                } completion: { done in
+                    UIView.animate(withDuration: 0.1) {
+                        labelToAnimate.alpha = 1
+                    }
+                }
+            default:
+                break
+            }
+        }
+        self.currentText = self.text ?? ""
+
         for i in 0 ..< digitsLabels.count {
             let currentLabel = digitsLabels[i]
             if isVibrateEnabled {
@@ -124,6 +150,7 @@ final public class EliteOTPField : UITextField {
                     currentLabel.layer.borderWidth = self.borderWidthInFilledState
                     currentLabel.layer.borderColor = self.borderColorFilledState
                 }
+                currentLabel.backgroundColor = self.fieldFilledBackgroundColor
                 currentLabel.font = self.fontType
                 currentLabel.text = String(text[index])
             }else{
@@ -131,15 +158,40 @@ final public class EliteOTPField : UITextField {
                     currentLabel.layer.borderWidth = self.borderWidthInEmptyState
                     currentLabel.layer.borderColor = self.borderColorEmptyState
                 }
+                currentLabel.backgroundColor = self.singleNumberBackground
                 currentLabel.font = self.placeHolderFontType
                 currentLabel.text = self.fieldPlaceHolder
             }
         }
         if text.count == digitsLabels.count {
             isFieldVerified = true
+            if isAnimationEnabledOnLastDigit {
+                for i in 0 ..< digitsLabels.count {
+                    let currentLabel = digitsLabels[i]
+                    DispatchQueue.main.async { [weak self] in
+                        guard let self = self else {
+                            return
+                        }
+                        UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseInOut) {
+                            currentLabel.transform = CGAffineTransform(scaleX: 0.7, y: 0.7)
+                        } completion: { done in
+                            UIView.animate(withDuration: 0.3) {
+                                currentLabel.transform = .identity
+                            }
+                        }
+                    }
+                }
+            }
+            isFieldVerified = true
             self.didEnteredLastDigit?(text)
         }else{
             isFieldVerified = false
         }
     }
+}
+
+public enum EliteOTPAnimationTypes {
+    case flip
+    case flash
+    case none
 }

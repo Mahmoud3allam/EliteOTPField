@@ -20,6 +20,9 @@ class ViewController: UIViewController {
         builder.setBorderColor(emptyStateColor: .clear, filledStateColor: .black)
 //        builder.translatesAutoresizingMaskIntoConstraints = true
         builder.setBorderWidth(emptyStateWidth: 1, filledStateWidth: 3)
+        builder.setFieldBackground(color: .blue)
+        builder.setLastDigitAnimation(isEnabled: true)
+        builder.setAnimationType(type: .flash)
         return builder.build()
     }()
 
