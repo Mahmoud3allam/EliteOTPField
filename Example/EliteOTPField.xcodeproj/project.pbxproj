@@ -29,8 +29,8 @@
 
 /* Begin PBXFileReference section */
 		0AC7B13303CFBFB4DD973C8C /* Pods_EliteOTPField_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EliteOTPField_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1109E7B0F2708EF794B5EC33 /* EliteOTPField.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = EliteOTPField.podspec; path = ../EliteOTPField.podspec; sourceTree = "<group>"; };
-		506CFE6DFB3CCB4DEDFAE048 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		1109E7B0F2708EF794B5EC33 /* EliteOTPField.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = EliteOTPField.podspec; path = ../EliteOTPField.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		506CFE6DFB3CCB4DEDFAE048 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* EliteOTPField_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EliteOTPField_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -44,7 +44,7 @@
 		681081EEAA67D6EB2A956134 /* Pods-EliteOTPField_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EliteOTPField_Example.release.xcconfig"; path = "Target Support Files/Pods-EliteOTPField_Example/Pods-EliteOTPField_Example.release.xcconfig"; sourceTree = "<group>"; };
 		A05D23FDE234A2568BCB4EDD /* Pods-EliteOTPField_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EliteOTPField_Tests.release.xcconfig"; path = "Target Support Files/Pods-EliteOTPField_Tests/Pods-EliteOTPField_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		BDB5F56D8A671EB7D6DA2173 /* Pods-EliteOTPField_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EliteOTPField_Example.debug.xcconfig"; path = "Target Support Files/Pods-EliteOTPField_Example/Pods-EliteOTPField_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		BF3485640730CF1C2DB747F2 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		BF3485640730CF1C2DB747F2 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		D7C231F0F354598B6C25C635 /* Pods_EliteOTPField_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EliteOTPField_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E57C7EC904BE90D425E770EF /* Pods-EliteOTPField_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EliteOTPField_Tests.debug.xcconfig"; path = "Target Support Files/Pods-EliteOTPField_Tests/Pods-EliteOTPField_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -156,7 +156,6 @@
 				E57C7EC904BE90D425E770EF /* Pods-EliteOTPField_Tests.debug.xcconfig */,
 				A05D23FDE234A2568BCB4EDD /* Pods-EliteOTPField_Tests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -227,6 +226,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -419,7 +419,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -465,7 +465,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";

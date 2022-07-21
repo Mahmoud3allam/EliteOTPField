@@ -1,0 +1,6 @@
+framework module EliteOTPField {
+  umbrella header "EliteOTPField-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-public class EliteOTPField : UITextField {
+final public class EliteOTPField : UITextField {
     
     internal var spacing:CGFloat = 6
     internal var singleNumberBackground: UIColor = .gray
@@ -19,19 +19,19 @@ public class EliteOTPField : UITextField {
     internal var isBorderEnabled: Bool = false
     internal var borderColorFilledState: CGColor = UIColor.black.cgColor
     internal var borderColorEmptyState: CGColor = UIColor.black.cgColor
-
     internal var borderWidthInEmptyState: CGFloat = 0
     internal var borderWidthInFilledState: CGFloat = 1
     internal var slotCount:Int = 6
-    
-    private var isConfigured = false
-    private var digitsLabels = [UILabel]()
+    internal var isVibrateEnabled: Bool = true
+
+    internal var isConfigured = false
+    internal var digitsLabels = [UILabel]()
     private lazy var tapRecognizer : UITapGestureRecognizer = {
         let recognizer = UITapGestureRecognizer()
         recognizer.addTarget(self, action: #selector(becomeFirstResponder))
         return recognizer
     }()
-    var clearAllDigits : Bool = false {
+    public var clearAllDigits : Bool = false {
         didSet {
             guard clearAllDigits == true else {return}
             guard self.text != nil || self.text!.count > 0 else {return}
@@ -40,12 +40,12 @@ public class EliteOTPField : UITextField {
             clearAllDigits.toggle()
         }
     }
-    private var isFieldVerified:Bool = false
+    public var isFieldVerified:Bool = false
     
-    var editingStatus : ((_ status:OTPEditingStatus)->())?
-    var didEnteredLastDigit : ((String)->())?
+    internal var editingStatus : ((_ status:OTPEditingStatus)->())?
+    public var didEnteredLastDigit : ((String)->())?
 
-    public func configure() {
+    internal func configure() {
         guard isConfigured == false else {return}
         self.isConfigured.toggle()
         self.configureTextField()
@@ -108,12 +108,16 @@ public class EliteOTPField : UITextField {
     
     @objc private func textDidChange(){
         guard let text = self.text , text.count <= digitsLabels.count else {
-            Vibration.error.vibrate()
+            if isVibrateEnabled {
+                Vibration.error.vibrate()
+            }
             return
         }
         for i in 0 ..< digitsLabels.count {
             let currentLabel = digitsLabels[i]
-            Vibration.medium.vibrate()
+            if isVibrateEnabled {
+                Vibration.medium.vibrate()
+            }
             if i < text.count {
                 let index = text.index(text.startIndex, offsetBy: i)
                 if self.isBorderEnabled {
@@ -132,28 +136,10 @@ public class EliteOTPField : UITextField {
             }
         }
         if text.count == digitsLabels.count {
-            self.didEnteredLastDigit?(text)
             isFieldVerified = true
+            self.didEnteredLastDigit?(text)
         }else{
             isFieldVerified = false
         }
     }
-}
-
-extension EliteOTPField :UITextFieldDelegate {
-    public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        guard let charactersCount = textField.text?.count else {return false}
-        return charactersCount < digitsLabels.count || string == ""
-    }
-    public func textFieldDidBeginEditing(_ textField: UITextField) {
-        editingStatus?(.Begain)
-    }
-    public func textFieldDidEndEditing(_ textField: UITextField) {
-        editingStatus?(.Ended)
-    }
-}
-
-enum OTPEditingStatus {
-    case Begain
-    case Ended
 }

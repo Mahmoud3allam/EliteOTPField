@@ -1,0 +1,6 @@
+framework module Pods_EliteOTPField_Example {
+  umbrella header "Pods-EliteOTPField_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}

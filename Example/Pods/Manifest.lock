@@ -1,0 +1,16 @@
+PODS:
+  - EliteOTPField (0.1.0)
+
+DEPENDENCIES:
+  - EliteOTPField (from `../`)
+
+EXTERNAL SOURCES:
+  EliteOTPField:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  EliteOTPField: 2c74f3cace00d888d4f82e33cb5815f21e1b9c5e
+
+PODFILE CHECKSUM: 50569239048b69b6032a8696f9ecd8b1e251399a
+
+COCOAPODS: 1.11.3

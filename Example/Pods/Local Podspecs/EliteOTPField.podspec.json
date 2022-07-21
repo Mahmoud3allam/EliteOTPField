@@ -1,0 +1,22 @@
+{
+  "name": "EliteOTPField",
+  "version": "0.1.0",
+  "summary": "A short description of EliteOTPField.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/Mahmoud3allam/EliteOTPField",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Mahmoud3allam": "mahmoudallam@circlepay.ai"
+  },
+  "source": {
+    "git": "https://github.com/Mahmoud3allam/EliteOTPField.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "10.0"
+  },
+  "source_files": "EliteOTPField/Classes/**/*"
+}

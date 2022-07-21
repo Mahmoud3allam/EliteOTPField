@@ -17,10 +17,11 @@ public class EliteOTPFieldBuilder {
     private var isBorderEnabled: Bool = false
     private var filledStateBorderColor: CGColor = UIColor.black.cgColor
     private var slotCount: Int = 6
-    
     private var borderWidthInEmptyState: CGFloat = 0
     private var borderWidthInFilledState: CGFloat = 1
     private var emptyStateBorderColor: CGColor = UIColor.black.cgColor
+    private var isVibrateEnabled: Bool = true
+    public var translatesAutoresizingMaskIntoConstraints: Bool = true
 
     public init() {
     }
@@ -71,9 +72,12 @@ public class EliteOTPFieldBuilder {
         self.borderWidthInFilledState = filledStateWidth
     }
 
+    public func setVibration(isEnabled: Bool) {
+        self.isVibrateEnabled = isEnabled
+    }
     public func build() -> EliteOTPField {
         let field = EliteOTPField()
-        field.translatesAutoresizingMaskIntoConstraints = false
+        field.translatesAutoresizingMaskIntoConstraints = self.translatesAutoresizingMaskIntoConstraints
         field.spacing = self.spacing
         field.singleNumberBackground = self.singleNumberBackground
         field.singleNumberViewCornerRaduis = self.singleNumberViewCornerRaduis
@@ -87,6 +91,7 @@ public class EliteOTPFieldBuilder {
         field.slotCount = self.slotCount
         field.borderWidthInEmptyState = self.borderWidthInEmptyState
         field.borderWidthInFilledState = self.borderWidthInFilledState
+        field.isVibrateEnabled = self.isVibrateEnabled
         field.configure()
         return field
     }
