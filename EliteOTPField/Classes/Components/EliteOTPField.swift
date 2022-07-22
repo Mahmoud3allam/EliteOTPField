@@ -14,7 +14,8 @@ final public class EliteOTPField : UITextField {
     internal var singleNumberViewCornerRaduis: CGFloat = 10
     internal var fontType: UIFont = UIFont.systemFont(ofSize: 30)
     internal var placeHolderFontType: UIFont = UIFont.systemFont(ofSize: 40)
-    internal var fieldTextColor: UIColor = .black
+    internal var slotFilledTextColor: UIColor = .black
+    internal var slotEmptyTextColor: UIColor = .black
     internal var fieldFilledBackgroundColor: UIColor = .clear
     internal var fieldPlaceHolder = "_"
     internal var isBorderEnabled: Bool = false
@@ -52,6 +53,10 @@ final public class EliteOTPField : UITextField {
     private var stackView: UIStackView?
     internal func configure() {
         guard isConfigured == false else {return}
+        guard self.slotCount <= 6 else {
+            print("EliteOTPField can't work with more than 6 slots.")
+            return
+        }
         self.isConfigured.toggle()
         self.configureTextField()
         let labelsStackView = self.createLabelsStackView(with: self.slotCount)
@@ -97,7 +102,7 @@ final public class EliteOTPField : UITextField {
             label.layer.cornerRadius = singleNumberViewCornerRaduis
             label.clipsToBounds = true
             label.isUserInteractionEnabled = true
-            label.textColor = self.fieldTextColor
+            label.textColor = self.slotEmptyTextColor
             label.text = self.fieldPlaceHolder
             
             if self.isBorderEnabled {
@@ -141,12 +146,14 @@ final public class EliteOTPField : UITextField {
                 }
                 currentLabel.backgroundColor = self.fieldFilledBackgroundColor
                 currentLabel.font = self.fontType
+                currentLabel.textColor = self.slotFilledTextColor
                 currentLabel.text = String(text[index])
             }else{
                 if self.isBorderEnabled {
                     currentLabel.layer.borderWidth = self.borderWidthInEmptyState
                     currentLabel.layer.borderColor = self.borderColorEmptyState
                 }
+                currentLabel.textColor = slotEmptyTextColor
                 currentLabel.backgroundColor = self.singleNumberBackground
                 currentLabel.font = self.placeHolderFontType
                 currentLabel.text = self.fieldPlaceHolder

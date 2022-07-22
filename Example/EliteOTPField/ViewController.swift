@@ -11,16 +11,23 @@ import EliteOTPField
 class ViewController: UIViewController {
     lazy var otpField: EliteOTPField = {
         let builder = EliteOTPFieldBuilder()
-        builder.setSingleNumberBackground(color: #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 0.7321035625))
         builder.setSlotCount(count: 4)
+        builder.setSpacing(spacing: 10)
+        builder.setSlotCornerRaduis(raduis: 10)
+        if let font = UIFont(name: "Roboto-Bold", size: 40) {
+            builder.setSlotFontType(font: font)
+            builder.setSlotPlaceholderFontType(font: font)
+        }
+
+        builder.setFilledSlotTextColor(color: .white)
+        builder.setEmptySlotTextColor(color: .black)
+        builder.setSlotPlaceHolder(placeHolder:"__")
+        builder.setEmptySlotBackgroundColor(color: #colorLiteral(red: 0.9568627451, green: 0.9647058824, blue: 0.9725490196, alpha: 1))
+        builder.setFilledSlotBackgroundColor(color: #colorLiteral(red: 0.262745098, green: 0.2823529412, blue: 0.5333333333, alpha: 1))
         builder.setBorder(isEnabled: true)
-        builder.setSingleNumberCornerRaduis(raduis: 8)
-        builder.setFieldPlaceHolder(placeHolder: "_")
-        builder.setTextColor(color: .white)
-        builder.setBorderColor(emptyStateColor: .clear, filledStateColor: .black)
-//        builder.translatesAutoresizingMaskIntoConstraints = true
-        builder.setBorderWidth(emptyStateWidth: 1, filledStateWidth: 3)
-        builder.setFieldBackground(color: #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1))
+        builder.setSlotBorderWidth(emptyStateWidth: 0.5, filledStateWidth: 3)
+        builder.setSlotBorderColor(emptyStateColor: #colorLiteral(red: 0.262745098, green: 0.2823529412, blue: 0.5333333333, alpha: 1), filledStateColor: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1))
+        builder.setVibration(isEnabled: true)
         builder.setLastDigitAnimation(isEnabled: true)
         builder.setAnimationType(type: .rotate)
         return builder.build()
@@ -50,13 +57,29 @@ class ViewController: UIViewController {
 
     private func setupOtpField() {
         self.view.addSubview(self.otpField)
-//        NSLayoutConstraint.activate([
-//            self.otpField.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
-//            self.otpField.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-//            self.otpField.widthAnchor.constraint(equalTo: self.view.widthAnchor, constant: -64),
-//            self.otpField.heightAnchor.constraint(equalToConstant: 80)
-//        ])
-        self.otpField.frame = CGRect(x: 32, y: self.view.frame.midY - 30, width: self.view.frame.width - 64, height: 60)
+        self.addOtpField(by: .Frame)
+
+    }
+    
+    private func addOtpField(by type: EliteOTPLayoutType) {
+        switch type {
+        case .Frame:
+            self.otpField.frame = CGRect(x: 16, y: self.view.frame.midY - 30, width: self.view.frame.width - 32, height: 70)
+        case .NSLayoutConstrains:
+            self.otpField.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                self.otpField.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
+                self.otpField.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+                self.otpField.widthAnchor.constraint(equalTo: self.view.widthAnchor, constant: -32),
+                self.otpField.heightAnchor.constraint(equalToConstant: 70)
+            ])
+        }
+
     }
 }
 
+
+enum EliteOTPLayoutType {
+    case NSLayoutConstrains
+    case Frame
+}
