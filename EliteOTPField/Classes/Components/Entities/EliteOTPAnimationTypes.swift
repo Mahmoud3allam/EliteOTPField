@@ -18,4 +18,5 @@ public enum EliteOTPAnimationTypes {
     case curlDown
     case curlUp
     case none
+    
 }
