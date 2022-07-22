@@ -12,6 +12,9 @@
 		18CEADDF2889228C00FEEF99 /* EliteOTPField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CEADDA2889228C00FEEF99 /* EliteOTPField.swift */; };
 		18CEADE02889228C00FEEF99 /* EliteOTPField + UITextFieldDelegete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CEADDB2889228C00FEEF99 /* EliteOTPField + UITextFieldDelegete.swift */; };
 		18CEADE12889228C00FEEF99 /* Vibration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CEADDD2889228C00FEEF99 /* Vibration.swift */; };
+		18CEADE428899D2600FEEF99 /* OTPEditingStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CEADE328899D2600FEEF99 /* OTPEditingStatus.swift */; };
+		18CEADE628899D3A00FEEF99 /* EliteOTPAnimationTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CEADE528899D3A00FEEF99 /* EliteOTPAnimationTypes.swift */; };
+		18CEADE828899D8000FEEF99 /* EliteOTPField + Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CEADE728899D8000FEEF99 /* EliteOTPField + Animations.swift */; };
 		201580358D3D637C05157C2764657B35 /* Pods-EliteOTPField_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D16053F4243C20D879E99C23A28AF61 /* Pods-EliteOTPField_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2CBABD173612F8C39C270DAF7C8E12C3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
 		5615E1B4ADEDC90369E0B8A4842E4189 /* Pods-EliteOTPField_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4E0662B8035101DDAAFFB366F721A218 /* Pods-EliteOTPField_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -51,6 +54,9 @@
 		18CEADDA2889228C00FEEF99 /* EliteOTPField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EliteOTPField.swift; sourceTree = "<group>"; };
 		18CEADDB2889228C00FEEF99 /* EliteOTPField + UITextFieldDelegete.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EliteOTPField + UITextFieldDelegete.swift"; sourceTree = "<group>"; };
 		18CEADDD2889228C00FEEF99 /* Vibration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vibration.swift; sourceTree = "<group>"; };
+		18CEADE328899D2600FEEF99 /* OTPEditingStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPEditingStatus.swift; sourceTree = "<group>"; };
+		18CEADE528899D3A00FEEF99 /* EliteOTPAnimationTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EliteOTPAnimationTypes.swift; sourceTree = "<group>"; };
+		18CEADE728899D8000FEEF99 /* EliteOTPField + Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EliteOTPField + Animations.swift"; sourceTree = "<group>"; };
 		1D93DECC35BF2A0CA8BD5993AE7EC4C6 /* EliteOTPField */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = EliteOTPField; path = EliteOTPField.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2008A65C91EC7D38289D5B8839AD4B1D /* Pods-EliteOTPField_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-EliteOTPField_Tests.modulemap"; sourceTree = "<group>"; };
 		295FC80B60D11CDE2532C5A9F17D9C30 /* EliteOTPField.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = EliteOTPField.release.xcconfig; sourceTree = "<group>"; };
@@ -153,8 +159,10 @@
 		18CEADD92889228C00FEEF99 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				18CEADE228899D0F00FEEF99 /* Entities */,
 				18CEADDA2889228C00FEEF99 /* EliteOTPField.swift */,
 				18CEADDB2889228C00FEEF99 /* EliteOTPField + UITextFieldDelegete.swift */,
+				18CEADE728899D8000FEEF99 /* EliteOTPField + Animations.swift */,
 			);
 			name = Components;
 			path = EliteOTPField/Classes/Components;
@@ -167,6 +175,15 @@
 			);
 			name = Utills;
 			path = EliteOTPField/Classes/Utills;
+			sourceTree = "<group>";
+		};
+		18CEADE228899D0F00FEEF99 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				18CEADE328899D2600FEEF99 /* OTPEditingStatus.swift */,
+				18CEADE528899D3A00FEEF99 /* EliteOTPAnimationTypes.swift */,
+			);
+			path = Entities;
 			sourceTree = "<group>";
 		};
 		578452D2E740E91742655AC8F1636D1F /* iOS */ = {
@@ -420,9 +437,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				18CEADDF2889228C00FEEF99 /* EliteOTPField.swift in Sources */,
+				18CEADE628899D3A00FEEF99 /* EliteOTPAnimationTypes.swift in Sources */,
 				18CEADDE2889228C00FEEF99 /* EliteOTPFieldBuilder.swift in Sources */,
 				18CEADE12889228C00FEEF99 /* Vibration.swift in Sources */,
 				0DDC21F813C503AC11B6124B7BCC651A /* EliteOTPField-dummy.m in Sources */,
+				18CEADE428899D2600FEEF99 /* OTPEditingStatus.swift in Sources */,
+				18CEADE828899D8000FEEF99 /* EliteOTPField + Animations.swift in Sources */,
 				18CEADE02889228C00FEEF99 /* EliteOTPField + UITextFieldDelegete.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

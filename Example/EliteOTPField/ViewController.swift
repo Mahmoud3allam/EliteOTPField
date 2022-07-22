@@ -11,8 +11,8 @@ import EliteOTPField
 class ViewController: UIViewController {
     lazy var otpField: EliteOTPField = {
         let builder = EliteOTPFieldBuilder()
-        builder.setSingleNumberBackground(color: #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1))
-        builder.setSlotCount(count: 6)
+        builder.setSingleNumberBackground(color: #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 0.7321035625))
+        builder.setSlotCount(count: 4)
         builder.setBorder(isEnabled: true)
         builder.setSingleNumberCornerRaduis(raduis: 8)
         builder.setFieldPlaceHolder(placeHolder: "_")
@@ -20,9 +20,9 @@ class ViewController: UIViewController {
         builder.setBorderColor(emptyStateColor: .clear, filledStateColor: .black)
 //        builder.translatesAutoresizingMaskIntoConstraints = true
         builder.setBorderWidth(emptyStateWidth: 1, filledStateWidth: 3)
-        builder.setFieldBackground(color: .blue)
+        builder.setFieldBackground(color: #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1))
         builder.setLastDigitAnimation(isEnabled: true)
-        builder.setAnimationType(type: .flash)
+        builder.setAnimationType(type: .rotate)
         return builder.build()
     }()
 

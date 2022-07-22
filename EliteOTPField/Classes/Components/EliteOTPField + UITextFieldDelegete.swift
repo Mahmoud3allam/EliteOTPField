@@ -20,7 +20,3 @@ extension EliteOTPField :UITextFieldDelegate {
     }
 }
 
-enum OTPEditingStatus {
-    case Begain
-    case Ended
-}

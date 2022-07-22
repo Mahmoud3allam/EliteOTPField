@@ -16,7 +16,6 @@ final public class EliteOTPField : UITextField {
     internal var placeHolderFontType: UIFont = UIFont.systemFont(ofSize: 40)
     internal var fieldTextColor: UIColor = .black
     internal var fieldFilledBackgroundColor: UIColor = .clear
-
     internal var fieldPlaceHolder = "_"
     internal var isBorderEnabled: Bool = false
     internal var borderColorFilledState: CGColor = UIColor.black.cgColor
@@ -28,9 +27,10 @@ final public class EliteOTPField : UITextField {
     internal var isAnimationEnabledOnLastDigit: Bool = false
     internal var animationType: EliteOTPAnimationTypes = .none
     internal var currentText = ""
-
     internal var isConfigured = false
     internal var digitsLabels = [UILabel]()
+    
+    //internal var isCirclular: Bool = true
     private lazy var tapRecognizer : UITapGestureRecognizer = {
         let recognizer = UITapGestureRecognizer()
         recognizer.addTarget(self, action: #selector(becomeFirstResponder))
@@ -49,12 +49,13 @@ final public class EliteOTPField : UITextField {
     
     internal var editingStatus : ((_ status:OTPEditingStatus)->())?
     public var didEnteredLastDigit : ((String)->())?
-
+    private var stackView: UIStackView?
     internal func configure() {
         guard isConfigured == false else {return}
         self.isConfigured.toggle()
         self.configureTextField()
         let labelsStackView = self.createLabelsStackView(with: self.slotCount)
+        self.stackView = labelsStackView
         addSubview(labelsStackView)
         addGestureRecognizer(self.tapRecognizer)
         NSLayoutConstraint.activate([
@@ -104,11 +105,14 @@ final public class EliteOTPField : UITextField {
                 label.layer.borderColor = self.borderColorEmptyState
                 label.layer.borderColor = self.borderColorEmptyState
             }
-            
             stackView.addArrangedSubview(label)
             self.digitsLabels.append(label)
         }
         return stackView
+    }
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+
     }
     
     @objc private func textDidChange(){
@@ -121,22 +125,7 @@ final public class EliteOTPField : UITextField {
         
         let index = text.count - 1 <= 0 ? 0 : text.count - 1
         let labelToAnimate =  digitsLabels[index]
-        if text.count > self.currentText.count {
-            switch self.animationType {
-            case .flip:
-                UIView.transition(with: labelToAnimate, duration: 0.3, options: .transitionFlipFromRight, animations: nil, completion: nil)
-            case .flash:
-                UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseInOut) {
-                    labelToAnimate.alpha = 0
-                } completion: { done in
-                    UIView.animate(withDuration: 0.1) {
-                        labelToAnimate.alpha = 1
-                    }
-                }
-            default:
-                break
-            }
-        }
+        self.handleAnimations(text: text, labelToAnimate: labelToAnimate, index: index)
         self.currentText = self.text ?? ""
 
         for i in 0 ..< digitsLabels.count {
@@ -169,14 +158,18 @@ final public class EliteOTPField : UITextField {
                 for i in 0 ..< digitsLabels.count {
                     let currentLabel = digitsLabels[i]
                     DispatchQueue.main.async { [weak self] in
-                        guard let self = self else {
+                        guard self != nil else {
                             return
                         }
-                        UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseInOut) {
+                        UIView.animate(withDuration: 0.1, delay: 0.0, options: .curveEaseInOut) {
                             currentLabel.transform = CGAffineTransform(scaleX: 0.7, y: 0.7)
                         } completion: { done in
-                            UIView.animate(withDuration: 0.3) {
-                                currentLabel.transform = .identity
+                            UIView.animate(withDuration: 0.1, delay: 0.0, options: .curveEaseInOut) {
+                                currentLabel.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+                            } completion: { done in
+                                UIView.animate(withDuration: 0.1) {
+                                    currentLabel.transform = .identity
+                                }
                             }
                         }
                     }
@@ -190,8 +183,24 @@ final public class EliteOTPField : UITextField {
     }
 }
 
-public enum EliteOTPAnimationTypes {
-    case flip
-    case flash
-    case none
-}
+
+//        if isCirclular {
+//            self.stackView?.alignment = .fill
+//            self.stackView?.distribution = .fill
+//            var height = self.frame.height
+//            let width = self.frame.width
+//            if slotCount > 5 && height > 55 {
+//                height = 55
+//            }
+//            let itemsWidth = CGFloat(self.slotCount) * height
+//            let freeWidth = width - itemsWidth
+//            let spacingCount = slotCount - 1
+//            let spacing = freeWidth / CGFloat(spacingCount)
+//            self.stackView?.spacing = spacing
+//            self.digitsLabels.forEach { view in
+//                view.widthAnchor.constraint(equalToConstant: height).isActive = true
+//                view.layer.cornerRadius = height / 2
+//                view.clipsToBounds = true
+//            }
+//
+//        }
