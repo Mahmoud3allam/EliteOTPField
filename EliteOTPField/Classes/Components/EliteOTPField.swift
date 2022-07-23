@@ -8,51 +8,64 @@
 
 import UIKit
 final public class EliteOTPField : UITextField {
-    
-    internal var spacing:CGFloat = 6
-    internal var singleNumberBackground: UIColor = .gray
-    internal var singleNumberViewCornerRaduis: CGFloat = 10
-    internal var fontType: UIFont = UIFont.systemFont(ofSize: 30)
-    internal var placeHolderFontType: UIFont = UIFont.systemFont(ofSize: 40)
-    internal var slotFilledTextColor: UIColor = .black
-    internal var slotEmptyTextColor: UIColor = .black
-    internal var fieldFilledBackgroundColor: UIColor = .clear
-    internal var fieldPlaceHolder = "_"
-    internal var isBorderEnabled: Bool = false
-    internal var borderColorFilledState: CGColor = UIColor.black.cgColor
-    internal var borderColorEmptyState: CGColor = UIColor.black.cgColor
-    internal var borderWidthInEmptyState: CGFloat = 0
-    internal var borderWidthInFilledState: CGFloat = 1
-    internal var slotCount:Int = 6
-    internal var isVibrateEnabled: Bool = true
-    internal var isAnimationEnabledOnLastDigit: Bool = false
-    internal var animationType: EliteOTPAnimationTypes = .none
+    //MARK:- Basic
+    public var spacing:CGFloat = 10
+    public var slotCount:Int = 4
+    public var slotCornerRaduis: CGFloat = 12
+    public var slotPlaceHolder = "_"
+    //  MARK:- Fonts
+    public var slotFontType: UIFont = UIFont.boldSystemFont(ofSize: 40)
+    public var slotPlaceHolderFontType: UIFont = UIFont.boldSystemFont(ofSize: 40)
+    //  MARK:- Coloring
+    public var filledSlotTextColor: UIColor = .white
+    public var emptySlotTextColor: UIColor = .black
+    public var emptySlotBackgroundColor: UIColor = #colorLiteral(red: 0.9284994602, green: 0.9486981034, blue: 0.9633803964, alpha: 1)
+    public var filledSlotBackgroundColor: UIColor = #colorLiteral(red: 0.8820366263, green: 0.2677072883, blue: 0.3189357519, alpha: 1)
+    // MARK:- Border
+    public var isBorderEnabled: Bool = false
+    public var filledSlotBorderWidth: CGFloat = 1
+    public var filledSlotBorderColor: CGColor = UIColor.black.cgColor
+    public var emptySlotBorderWidth: CGFloat = 0
+    public var emptySlotBorderColor: CGColor = UIColor.black.cgColor
+    //MARK:- Vibration
+    public var isVibrateEnabled: Bool = true
+    //MARK:- Animation
+    public var isAnimationEnabledOnLastDigit: Bool = false
+    public var animationType: EliteOTPAnimationTypes = .none
+    //MARK:- UnderlineViews
+    var enableUnderLineViews: Bool = false
+    var underlineViewWidthMultiplier:CGFloat = 0.7
+    var underlineViewHeight:CGFloat = 0.7
+    var underlineViewBottomSpace:CGFloat = 5
+    //MARK:- Field Verified
+    public var isFieldVerified:Bool = false
+    //MARK:- Call Back
+    public weak var otpDelegete: EliteOTPFieldDelegete?
+    //MARK:- Internal
     internal var currentText = ""
     internal var isConfigured = false
     internal var digitsLabels = [UILabel]()
-    
-    //internal var isCirclular: Bool = true
+    internal var underLineViews = [UIView]()
+
     private lazy var tapRecognizer : UITapGestureRecognizer = {
         let recognizer = UITapGestureRecognizer()
         recognizer.addTarget(self, action: #selector(becomeFirstResponder))
         return recognizer
     }()
-    public var clearAllDigits : Bool = false {
-        didSet {
-            guard clearAllDigits == true else {return}
-            guard self.text != nil || self.text!.count > 0 else {return}
-            self.text = nil
-            self.sendActions(for: .editingChanged)
-            clearAllDigits.toggle()
-        }
-    }
-    public var isFieldVerified:Bool = false
-    
     internal var editingStatus : ((_ status:OTPEditingStatus)->())?
-   // public var didEnteredLastDigit : ((String)->())?
-    public weak var otpDelegete: EliteOTPFieldDelegete?
+ 
+
+
     private var stackView: UIStackView?
     
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.configure()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     internal func configure() {
         guard isConfigured == false else {return}
@@ -72,6 +85,7 @@ final public class EliteOTPField : UITextField {
             labelsStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             labelsStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
         ])
+        self.addUnderlineViews()
     }
     
     private func configureTextField() {
@@ -100,20 +114,21 @@ final public class EliteOTPField : UITextField {
             let label = UILabel()
             label.translatesAutoresizingMaskIntoConstraints = false
             label.textAlignment = .center
-            label.font = self.placeHolderFontType
-            label.backgroundColor = singleNumberBackground
-            label.layer.cornerRadius = singleNumberViewCornerRaduis
+            label.font = self.slotPlaceHolderFontType
+            label.backgroundColor = emptySlotBackgroundColor
+            label.layer.cornerRadius = slotCornerRaduis
             label.clipsToBounds = true
             label.isUserInteractionEnabled = true
-            label.textColor = self.slotEmptyTextColor
-            label.text = self.fieldPlaceHolder
+            label.textColor = self.emptySlotTextColor
+            label.text = self.slotPlaceHolder
             
             if self.isBorderEnabled {
-                label.layer.borderWidth = self.borderWidthInEmptyState
-                label.layer.borderColor = self.borderColorEmptyState
-                label.layer.borderColor = self.borderColorEmptyState
+                label.layer.borderWidth = self.emptySlotBorderWidth
+                label.layer.borderColor = self.emptySlotBorderColor
+                label.layer.borderColor = self.emptySlotBorderColor
             }
             stackView.addArrangedSubview(label)
+
             self.digitsLabels.append(label)
         }
         return stackView
@@ -121,7 +136,10 @@ final public class EliteOTPField : UITextField {
     public override func layoutSubviews() {
         super.layoutSubviews()
 
+
+       
     }
+    
     
     @objc private func textDidChange(){
         guard let text = self.text , text.count <= digitsLabels.count else {
@@ -135,6 +153,7 @@ final public class EliteOTPField : UITextField {
         let labelToAnimate =  digitsLabels[index]
         self.handleAnimations(text: text, labelToAnimate: labelToAnimate, index: index)
         self.currentText = self.text ?? ""
+        
 
         for i in 0 ..< digitsLabels.count {
             let currentLabel = digitsLabels[i]
@@ -144,22 +163,22 @@ final public class EliteOTPField : UITextField {
             if i < text.count {
                 let index = text.index(text.startIndex, offsetBy: i)
                 if self.isBorderEnabled {
-                    currentLabel.layer.borderWidth = self.borderWidthInFilledState
-                    currentLabel.layer.borderColor = self.borderColorFilledState
+                    currentLabel.layer.borderWidth = self.filledSlotBorderWidth
+                    currentLabel.layer.borderColor = self.filledSlotBorderColor
                 }
-                currentLabel.backgroundColor = self.fieldFilledBackgroundColor
-                currentLabel.font = self.fontType
-                currentLabel.textColor = self.slotFilledTextColor
+                currentLabel.backgroundColor = self.filledSlotBackgroundColor
+                currentLabel.font = self.slotFontType
+                currentLabel.textColor = self.filledSlotTextColor
                 currentLabel.text = String(text[index])
             }else{
                 if self.isBorderEnabled {
-                    currentLabel.layer.borderWidth = self.borderWidthInEmptyState
-                    currentLabel.layer.borderColor = self.borderColorEmptyState
+                    currentLabel.layer.borderWidth = self.emptySlotBorderWidth
+                    currentLabel.layer.borderColor = self.emptySlotBorderColor
                 }
-                currentLabel.textColor = slotEmptyTextColor
-                currentLabel.backgroundColor = self.singleNumberBackground
-                currentLabel.font = self.placeHolderFontType
-                currentLabel.text = self.fieldPlaceHolder
+                currentLabel.textColor = emptySlotTextColor
+                currentLabel.backgroundColor = self.emptySlotBackgroundColor
+                currentLabel.font = self.slotPlaceHolderFontType
+                currentLabel.text = self.slotPlaceHolder
             }
         }
         if text.count == digitsLabels.count {
@@ -191,6 +210,30 @@ final public class EliteOTPField : UITextField {
             isFieldVerified = false
         }
     }
+    
+    public func clearAllSlotDigits() {
+        guard self.text != nil || self.text!.count > 0 else {return}
+        self.text = nil
+        self.sendActions(for: .editingChanged)
+    }
+    
+    private func addUnderlineViews() {
+        if enableUnderLineViews {
+            for label in digitsLabels {
+                let underLineView = UIView()
+                underLineView.backgroundColor = .black
+                underLineView.translatesAutoresizingMaskIntoConstraints = false
+                self.addSubview(underLineView)
+                NSLayoutConstraint.activate([
+                    underLineView.centerXAnchor.constraint(equalTo: label.centerXAnchor),
+                    underLineView.bottomAnchor.constraint(equalTo: label.bottomAnchor, constant: -underlineViewBottomSpace),
+                    underLineView.widthAnchor.constraint(equalTo: label.widthAnchor, multiplier: underlineViewWidthMultiplier),
+                    underLineView.heightAnchor.constraint(equalToConstant: 4)
+                ])
+                self.underLineViews.append(underLineView)
+            }
+        }
+    }
 }
 
 
@@ -198,3 +241,13 @@ public protocol EliteOTPFieldDelegete: AnyObject {
     func didEnterLastDigit(otp: String)
 }
 
+
+//public var clearAllDigits : Bool = false {
+//    didSet {
+//        guard clearAllDigits == true else {return}
+//        guard self.text != nil || self.text!.count > 0 else {return}
+//        self.text = nil
+//        self.sendActions(for: .editingChanged)
+//        clearAllDigits.toggle()
+//    }
+//}

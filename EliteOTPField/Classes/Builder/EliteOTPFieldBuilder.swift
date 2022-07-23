@@ -5,7 +5,9 @@
 //  Created by Alchemist on 21/07/2022.
 //
 
+
 import Foundation
+import UIKit
 public class EliteOTPFieldBuilder {
     //MARK:- Basic
     private var slotCount: Int = 6
@@ -116,23 +118,23 @@ public class EliteOTPFieldBuilder {
         let field = EliteOTPField()
         field.translatesAutoresizingMaskIntoConstraints = self.translatesAutoresizingMaskIntoConstraints
         field.spacing = self.spacing
-        field.singleNumberBackground = self.emptySlotBackgroundColor
-        field.singleNumberViewCornerRaduis = self.slotCornerRaduis
-        field.fontType = self.slotFontType
-        field.placeHolderFontType = self.slotPlaceHolderFontType
-        field.slotFilledTextColor = self.filledSlotTextColor
-        field.fieldPlaceHolder = self.slotPlaceholder
+        field.emptySlotBackgroundColor = self.emptySlotBackgroundColor
+        field.slotCornerRaduis = self.slotCornerRaduis
+        field.slotFontType = self.slotFontType
+        field.slotPlaceHolderFontType = self.slotPlaceHolderFontType
+        field.filledSlotTextColor = self.filledSlotTextColor
+        field.slotPlaceHolder = self.slotPlaceholder
         field.isBorderEnabled = self.isBorderEnabled
-        field.borderColorFilledState = self.filledSlotBorderColor
-        field.borderColorEmptyState = self.emptySlotBorderColor
+        field.filledSlotBorderColor = self.filledSlotBorderColor
+        field.emptySlotBorderColor = self.emptySlotBorderColor
         field.slotCount = self.slotCount
-        field.borderWidthInEmptyState = self.emptySlotBorderWidth
-        field.borderWidthInFilledState = self.filledSlotBorderWidth
+        field.emptySlotBorderWidth = self.emptySlotBorderWidth
+        field.filledSlotBorderWidth = self.filledSlotBorderWidth
         field.isVibrateEnabled = self.isVibrateEnabled
-        field.fieldFilledBackgroundColor = self.filledSlotBackgroundColor
+        field.filledSlotBackgroundColor = self.filledSlotBackgroundColor
         field.isAnimationEnabledOnLastDigit = self.isAnimationEnabledOnLastDigit
         field.animationType = animationType
-        field.slotEmptyTextColor = self.emptySlotTextColor
+        field.emptySlotTextColor = self.emptySlotTextColor
         field.configure()
         return field
     }
