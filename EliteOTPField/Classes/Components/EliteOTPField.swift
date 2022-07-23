@@ -49,8 +49,11 @@ final public class EliteOTPField : UITextField {
     public var isFieldVerified:Bool = false
     
     internal var editingStatus : ((_ status:OTPEditingStatus)->())?
-    public var didEnteredLastDigit : ((String)->())?
+   // public var didEnteredLastDigit : ((String)->())?
+    public weak var otpDelegete: EliteOTPFieldDelegete?
     private var stackView: UIStackView?
+    
+    
     internal func configure() {
         guard isConfigured == false else {return}
         guard self.slotCount <= 6 else {
@@ -183,7 +186,7 @@ final public class EliteOTPField : UITextField {
                 }
             }
             isFieldVerified = true
-            self.didEnteredLastDigit?(text)
+            self.otpDelegete?.didEnterLastDigit(otp: text)
         }else{
             isFieldVerified = false
         }
@@ -191,23 +194,7 @@ final public class EliteOTPField : UITextField {
 }
 
 
-//        if isCirclular {
-//            self.stackView?.alignment = .fill
-//            self.stackView?.distribution = .fill
-//            var height = self.frame.height
-//            let width = self.frame.width
-//            if slotCount > 5 && height > 55 {
-//                height = 55
-//            }
-//            let itemsWidth = CGFloat(self.slotCount) * height
-//            let freeWidth = width - itemsWidth
-//            let spacingCount = slotCount - 1
-//            let spacing = freeWidth / CGFloat(spacingCount)
-//            self.stackView?.spacing = spacing
-//            self.digitsLabels.forEach { view in
-//                view.widthAnchor.constraint(equalToConstant: height).isActive = true
-//                view.layer.cornerRadius = height / 2
-//                view.clipsToBounds = true
-//            }
-//
-//        }
+public protocol EliteOTPFieldDelegete: AnyObject {
+    func didEnterLastDigit(otp: String)
+}
+
