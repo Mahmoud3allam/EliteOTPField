@@ -8,9 +8,9 @@
 
 import Foundation
 import UIKit
-public class EliteOTPFieldBuilder {
+internal class EliteOTPFieldBuilder {
     //MARK:- Basic
-    private var slotCount: Int = 6
+    private var slotCount: UInt = 6
     private var spacing:CGFloat = 6
     private var slotCornerRaduis: CGFloat = 10
     private var slotPlaceholder = "_"
@@ -44,7 +44,7 @@ public class EliteOTPFieldBuilder {
         self.spacing = spacing
     }
     
-    public func setSlotCount(count: Int) {
+    public func setSlotCount(count: UInt) {
         self.slotCount = count
     }
     
@@ -135,7 +135,7 @@ public class EliteOTPFieldBuilder {
         field.isAnimationEnabledOnLastDigit = self.isAnimationEnabledOnLastDigit
         field.animationType = animationType
         field.emptySlotTextColor = self.emptySlotTextColor
-        field.configure()
+        field.build()
         return field
     }
 }

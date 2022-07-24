@@ -10,9 +10,9 @@ import UIKit
 final public class EliteOTPField : UITextField {
     //MARK:- Basic
     public var spacing:CGFloat = 10
-    public var slotCount:Int = 4
+    public var slotCount:UInt = 4
     public var slotCornerRaduis: CGFloat = 12
-    public var slotPlaceHolder = "_"
+    public var slotPlaceHolder = ""
     //  MARK:- Fonts
     public var slotFontType: UIFont = UIFont.boldSystemFont(ofSize: 40)
     public var slotPlaceHolderFontType: UIFont = UIFont.boldSystemFont(ofSize: 40)
@@ -33,10 +33,10 @@ final public class EliteOTPField : UITextField {
     public var isAnimationEnabledOnLastDigit: Bool = false
     public var animationType: EliteOTPAnimationTypes = .none
     //MARK:- UnderlineViews
-    var enableUnderLineViews: Bool = false
-    var underlineViewWidthMultiplier:CGFloat = 0.7
-    var underlineViewHeight:CGFloat = 0.7
-    var underlineViewBottomSpace:CGFloat = 5
+    public var enableUnderLineViews: Bool = false
+    public var underlineViewWidthMultiplier:CGFloat = 0.7
+    public var underlineViewHeight:CGFloat = 0.7
+    public var underlineViewBottomSpace:CGFloat = 5
     //MARK:- Field Verified
     public var isFieldVerified:Bool = false
     //MARK:- Call Back
@@ -58,16 +58,7 @@ final public class EliteOTPField : UITextField {
 
     private var stackView: UIStackView?
     
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
-        self.configure()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    internal func configure() {
+    public func build() {
         guard isConfigured == false else {return}
         guard self.slotCount <= 6 else {
             print("EliteOTPField can't work with more than 6 slots.")
@@ -103,7 +94,7 @@ final public class EliteOTPField : UITextField {
         delegate = self
     }
     
-    private func createLabelsStackView(with count:Int)-> UIStackView {
+    private func createLabelsStackView(with count:UInt)-> UIStackView {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .horizontal

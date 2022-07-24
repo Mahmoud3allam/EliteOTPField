@@ -11,26 +11,13 @@ import EliteOTPField
 class ViewController: UIViewController {
     lazy var otpField: EliteOTPField = {
         let field = EliteOTPField()
-//        builder.slotCount = 4
-//        builder.setSlotCount(count: 4)
-//        builder.setSpacing(spacing: 10)
-//        builder.setSlotCornerRaduis(raduis: 10)
-//        if let font = UIFont(name: "Roboto-Bold", size: 40) {
-//            builder.setSlotFontType(font: font)
-//            builder.setSlotPlaceholderFontType(font: font)
-//        }
-//        builder.setFilledSlotTextColor(color: .white)
-//        builder.setEmptySlotTextColor(color: .black)
-//        builder.setSlotPlaceHolder(placeHolder:"_")
-//        builder.setEmptySlotBackgroundColor(color: #colorLiteral(red: 0.9568627451, green: 0.9647058824, blue: 0.9725490196, alpha: 1))
-//        builder.setFilledSlotBackgroundColor(color: #colorLiteral(red: 0.262745098, green: 0.2823529412, blue: 0.5333333333, alpha: 1))
-//        builder.setBorder(isEnabled: false)
-//        builder.setSlotBorderWidth(emptyStateWidth: 0.5, filledStateWidth: 3)
-//        builder.setSlotBorderColor(emptyStateColor: #colorLiteral(red: 0.262745098, green: 0.2823529412, blue: 0.5333333333, alpha: 1), filledStateColor: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1))
-//        builder.setVibration(isEnabled: true)
-//        builder.setLastDigitAnimation(isEnabled: false)
-//        builder.setAnimationType(type: .rotate)
-//        return builder.build()
+        field.slotCount = 6
+        field.animationType = .flipFromLeft
+        field.slotPlaceHolder = "_"
+        field.enableUnderLineViews = false
+        field.filledSlotBackgroundColor = #colorLiteral(red: 0.1215686277, green: 0.01176470611, blue: 0.4235294163, alpha: 1)
+        field.slotCornerRaduis = 8
+        field.build()
         return field
     }()
 
