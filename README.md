@@ -32,7 +32,7 @@
 - [Usage 🧑‍💻](#headers)  
 - [Customization 🎨](#headers)  
 - [Animations 🦋](#headers)  
-
+                                                                                                                          
 - [References 🔙](#headers)  
 - [Author](#headers)  
 - [License](#headers)  
@@ -223,7 +223,48 @@ Below GIFS reflecting each type of EliteOTPAnimationTypes Enum :-
       <td><img src="https://user-images.githubusercontent.com/42733811/180704572-1d13197a-31cb-42e0-9ec3-922cfeb23b16.gif" width="200" height="400" width=270 height=480></td>
   </tr>
  </table>
- 
+                                                                                                                                                   
+ <table>
+  <tr>
+     <td>rotate</td>
+     <td>expand</td>
+     <td>crossDissolve</td>
+     <td>curlDown</td>
+
+  </tr>
+  <tr>
+    <td><img src="https://user-images.githubusercontent.com/42733811/180705040-fe006dde-f9c8-4acb-8cf2-aa9ba155287c.gif" width="200" height="400" width=270 height=480></td>
+    <td><img src="https://user-images.githubusercontent.com/42733811/180705132-80a05e43-d241-40ab-9bc8-d66eb992c879.gif" width="200" height="400" width=270 height=480></td>
+     <td><img src="https://user-images.githubusercontent.com/42733811/180705223-01ba015a-a3ef-4061-9d6c-45e0f2c4a0e0.gif" width="200" height="400" width=270 height=480></td>
+      <td><img src="https://user-images.githubusercontent.com/42733811/180705312-9a6e6456-bed2-41c2-a03c-a0bf42073cb5.gif" width="200" height="400" width=270 height=480></td>
+  </tr>
+ </table>
+                                                                                                                                                    <table>
+  <tr>
+     <td>curlUp</td>
+     <td>none</td>
+
+  </tr>
+  <tr>
+    <td><img src="https://user-images.githubusercontent.com/42733811/180705568-a3f6f7c7-5985-45c6-beba-ea9c286ea8f7.gif" width="200" height="400" width=270 height=480></td>
+    <td><img src="https://user-images.githubusercontent.com/42733811/180705725-320a79d0-45d6-4e08-ad9d-ae6017be1619.gif" width="200" height="400" width=270 height=480></td>
+  </tr>
+ </table>
+                                                                                                                                                 
+   You can also enable animation on the last digit 
+<table>
+  <tr>
+     <td>lastDigit Animation</td>
+
+  </tr>
+  <tr>
+    <td><img src="https://user-images.githubusercontent.com/42733811/180706092-e1a43705-e73b-4c6f-aee0-59d5ee6d01d5.gif" width="200" height="400" width=270 height=480></td>
+  </tr>
+ </table>
+    
+ ## References 🔙
+
+https://www.youtube.com/watch?v=mHxAvSs914g&t=749s&ab_channel=KiloLoco                                                                                                                               
 ## Author
 
 Mahmoud3allam, https://github.com/Mahmoud3allam , mahmoudallam@circlepay.ai
