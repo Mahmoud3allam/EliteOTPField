@@ -31,8 +31,7 @@
 - [Integration 💻](#headers)  
 - [Usage 🧑‍💻](#headers)  
 - [Customization 🎨](#headers)  
-- [Animations 🦋](#headers)  
-                                                                                                                          
+- [Animations 🦋](#headers)                                                                                                                    
 - [References 🔙](#headers)  
 - [Author](#headers)  
 - [License](#headers)  
@@ -251,7 +250,10 @@ Below GIFS reflecting each type of EliteOTPAnimationTypes Enum :-
   </tr>
  </table>
                                                                                                                                                  
-   You can also enable animation on the last digit 
+   You can also enable animation on the last digit like this
+   ```ruby
+   field.isAnimationEnabledOnLastDigit = true
+```
 <table>
   <tr>
      <td>lastDigit Animation</td>
