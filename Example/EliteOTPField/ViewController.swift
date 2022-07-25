@@ -11,7 +11,7 @@ import EliteOTPField
 class ViewController: UIViewController {
     lazy var otpField: EliteOTPField = {
         let field = EliteOTPField()
-        field.slotCount = 6
+        field.slotCount = 4
         field.animationType = .flipFromLeft
         field.slotPlaceHolder = "_"
         field.enableUnderLineViews = false
