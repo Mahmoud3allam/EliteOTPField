@@ -5,19 +5,22 @@
 </p>
 
 <p align="center">
-    <img src="https://github.com/KarimEbrahemAbdelaziz/SwiftyMenu/workflows/Build/badge.svg" />
-    <img src="https://img.shields.io/badge/Swift-5.0-orange.svg" />
-    <a href="https://cocoadocs.org/pods/SwiftyMenu/">
-        <img src="http://img.shields.io/badge/Cocoapods-available-green.svg?style=flat" alt="Cocoapod" />
+    <img src="https://img.shields.io/badge/Swift-language-orange" />
+    <a href="">
+    <img src="http://img.shields.io/badge/Cocoapods-available-green.svg?style=flat" alt="Cocoapod" />
     </a>
-    <a href="https://github.com/KarimEbrahemAbdelaziz/SwiftyMenu/blob/master/LICENSE">
+    <a href="https://github.com/MahmoudAllam/EliteOTPField/blob/master/LICENSE">
         <img src="http://img.shields.io/badge/license-MIT-70a1fb.svg?style=flat" alt="MIT License" />
+    </a>
+    <br>
+    <a href="https://www.linkedin.com/in/mahmoud-allam-913183169/">
+        <img src="https://img.shields.io/badge/linkedIn-%40MahmoudAllam-blue.svg?style=flat" alt="LinkedIn: @MahmoudAllam" />
     </a>
     <br>
 </p>
 
 #
-## Product Objectives 🎯
+## Objectives 🎯
 
 ## Table of Contents ⚓ 
 [Overview 👀](#headers) 
